@@ -2,6 +2,7 @@
 
 namespace App\Tests\Bowling;
 
+use App\Bowling\BowlingGame;
 use PHPUnit\Framework\TestCase;
 
 class BowlingGameTest extends TestCase
