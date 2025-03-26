@@ -39,6 +39,17 @@ class BowlingGameTest extends TestCase
         self::assertSame(18, $this->game->getScore());
     }
 
+    public function testOneStrike(): void
+    {
+        $this->game->roll(10); //strike
+        $this->game->roll(3);
+        $this->game->roll(2);
+
+        $this->rollMany(16, 0);
+
+        self::assertSame(20, $this->game->getScore());
+    }
+
     private function rollMany(int $times, int $pins): void
     {
         for ($i = 0; $i < $times; $i++) {
