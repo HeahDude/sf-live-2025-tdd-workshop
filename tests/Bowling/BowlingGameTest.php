@@ -17,4 +17,15 @@ class BowlingGameTest extends TestCase
 
         self::assertSame(0, $game->getScore());
     }
+
+    public function testAllOnes(): void
+    {
+        $game = new BowlingGame();
+
+        for ($i = 0; $i < 20; $i++) {
+            $game->roll(1);
+        }
+
+        self::assertSame(20, $game->getScore());
+    }
 }
