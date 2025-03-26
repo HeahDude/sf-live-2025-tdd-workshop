@@ -14,4 +14,16 @@ class PlayerRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Player::class);
     }
+
+    public function getScoreboard(): array
+    {
+        return $this->createQueryBuilder('player')
+            ->leftJoin(GameResult::class, 'result', 'WITH', 'player = result.player')
+            ->addSelect('COUNT(result) AS score')
+            ->where('result.victory = TRUE')
+            ->groupBy('player')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
