@@ -28,4 +28,13 @@ class NameInverterTest extends TestCase
 
         self::assertSame($name, $this->inverter->invert($name));
     }
+
+    public function testInvertSimpleNameWithSpaces(): void
+    {
+        $nameInverter = new NameInverter();
+
+        $name = ' Toto ';
+
+        self::assertSame('Toto', $this->inverter->invert($name));
+    }
 }
