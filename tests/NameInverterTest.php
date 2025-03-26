@@ -48,10 +48,23 @@ class NameInverterTest extends TestCase
         self::assertSame('Tata, Toto', $this->inverter->invert($name));
     }
 
-    public function testInvertFullNameWithHonorifics(): void
+    /**
+     * @dataProvider provideHonorifics
+     */
+    public function testInvertFullNameWithHonorifics(string $honorific): void
     {
-        $name = 'Mr. Toto Tata';
+        $name = $honorific.' Toto Tata';
 
         self::assertSame('Tata, Toto', $this->inverter->invert($name));
+    }
+
+    public function provideHonorifics(): iterable
+    {
+        yield 'Mr.' => ['Mr.'];
+        yield 'Mr' => ['Mr'];
+        yield 'Mrs.' => ['Mrs.'];
+        yield 'Mrs' => ['Mrs'];
+        yield 'Ms.' => ['Ms.'];
+        yield 'Ms' => ['Ms'];
     }
 }
