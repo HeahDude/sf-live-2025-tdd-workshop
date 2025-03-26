@@ -7,12 +7,17 @@ use PHPUnit\Framework\TestCase;
 
 class NameInverterTest extends TestCase
 {
+    private NameInverter $inverter;
+
+    protected function setUp(): void
+    {
+        $this->inverter = new NameInverter();
+    }
+
     public function testInvertEmpty(): void
     {
-        $nameInverter = new NameInverter();
-
-        self::assertSame('', $nameInverter->invert(null));
-        self::assertSame('', $nameInverter->invert(''));
+        self::assertSame('', $this->inverter->invert(null));
+        self::assertSame('', $this->inverter->invert(''));
     }
 
     public function testInvertSimpleName(): void
@@ -21,6 +26,6 @@ class NameInverterTest extends TestCase
 
         $name = 'Toto';
 
-        self::assertSame($name, $nameInverter->invert($name));
+        self::assertSame($name, $this->inverter->invert($name));
     }
 }
