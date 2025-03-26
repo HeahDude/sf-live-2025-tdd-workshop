@@ -14,6 +14,6 @@ class WordWrapper
             return $s;
         }
 
-        return $s; // todo cut
+        return str_replace(' ', "\n", $s);
     }
 }
