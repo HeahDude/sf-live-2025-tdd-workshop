@@ -4,9 +4,14 @@ namespace App\Bowling;
 
 class BowlingGame
 {
-    /** @var list<int> */
-    private array $rolls = [];
+    /** @var \SplFixedArray<int> */
+    private \SplFixedArray $rolls;
     private int $currentRoll = 0;
+
+    public function __construct()
+    {
+        $this->rolls = new \SplFixedArray(21);
+    }
 
     public function roll(int $pins): void
     {
@@ -19,6 +24,14 @@ class BowlingGame
         $frameIndex = 0;
 
         for ($frame = 0; $frame < 10; $frame++) {
+            if (10 === $this->rolls[$frameIndex]) {
+                // Strike
+                $score += 10 + $this->rolls[$frameIndex + 1] + $this->rolls[$frameIndex + 2];
+                $frameIndex++;
+
+                continue;
+            }
+
             if ($this->isSpare($frameIndex)) {
                 // Spare
                 $score += 10 + $this->rolls[$frameIndex + 2];
