@@ -12,5 +12,7 @@ class WordWrapperTest extends TestCase
         $wrapper = new WordWrapper();
 
         self::assertSame('', $wrapper->wrap('', 1));
+        self::assertSame("x\nx", $wrapper->wrap('xx', 1));
+        self::assertSame("x\nx", $wrapper->wrap('xx', 1));
     }
 }
