@@ -10,6 +10,12 @@ class NameInverter
             return '';
         }
 
-        return trim($name);
+        $parts = explode(' ', trim($name));
+
+        if (count($parts) < 2) {
+            return $parts[0];
+        }
+
+        return sprintf('%s, %s', $parts[1], $parts[0]);
     }
 }
