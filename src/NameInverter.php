@@ -10,6 +10,6 @@ class NameInverter
             return '';
         }
 
-        return $name;
+        return trim($name);
     }
 }
