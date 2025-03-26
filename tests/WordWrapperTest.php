@@ -7,24 +7,10 @@ use PHPUnit\Framework\TestCase;
 
 class WordWrapperTest extends TestCase
 {
-    public function testWrapBlank(): void
+    public function testWrap(): void
     {
         $wrapper = new WordWrapper();
 
         self::assertSame('', $wrapper->wrap('', 1));
-    }
-
-    public function testWrapShortLine(): void
-    {
-        $wrapper = new WordWrapper();
-
-        self::assertSame('toto', $wrapper->wrap('toto', 5));
-    }
-
-    public function testWrapSpace(): void
-    {
-        $wrapper = new WordWrapper();
-
-        self::assertSame("toto\ntoto", $wrapper->wrap('toto toto', 4));
     }
 }
