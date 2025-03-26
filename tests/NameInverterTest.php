@@ -74,4 +74,11 @@ class NameInverterTest extends TestCase
 
         self::assertSame('Tata, Toto Bs. PhD.', $this->inverter->invert($name));
     }
+
+    public function testInvertIntegrated(): void
+    {
+        $name = 'Mr. Toto Tata III Bs. PhD.';
+
+        self::assertSame('Tata, Toto III Bs. PhD.', $this->inverter->invert($name));
+    }
 }
