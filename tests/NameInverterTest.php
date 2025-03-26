@@ -22,8 +22,6 @@ class NameInverterTest extends TestCase
 
     public function testInvertSimpleName(): void
     {
-        $nameInverter = new NameInverter();
-
         $name = 'Toto';
 
         self::assertSame($name, $this->inverter->invert($name));
@@ -31,8 +29,6 @@ class NameInverterTest extends TestCase
 
     public function testInvertSimpleNameWithSpaces(): void
     {
-        $nameInverter = new NameInverter();
-
         $name = ' Toto ';
 
         self::assertSame('Toto', $this->inverter->invert($name));
@@ -40,8 +36,6 @@ class NameInverterTest extends TestCase
 
     public function testInvertFullName(): void
     {
-        $nameInverter = new NameInverter();
-
         $name = 'Toto Tata';
 
         self::assertSame('Tata, Toto', $this->inverter->invert($name));
@@ -49,8 +43,6 @@ class NameInverterTest extends TestCase
 
     public function testInvertFullNameWithInnerSpaces(): void
     {
-        $nameInverter = new NameInverter();
-
         $name = ' Toto  Tata ';
 
         self::assertSame('Tata, Toto', $this->inverter->invert($name));
@@ -58,8 +50,6 @@ class NameInverterTest extends TestCase
 
     public function testInvertFullNameWithHonorifics(): void
     {
-        $nameInverter = new NameInverter();
-
         $name = 'Mr. Toto Tata';
 
         self::assertSame('Tata, Toto', $this->inverter->invert($name));

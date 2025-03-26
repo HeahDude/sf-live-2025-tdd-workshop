@@ -12,7 +12,7 @@ class NameInverter
 
         $parts = preg_split('#\s+#', trim($name));
 
-        if ($parts[0] === 'Mr.') {
+        if ($this->isHonorific($parts[0])) {
             array_shift($parts);
         }
 
@@ -21,5 +21,10 @@ class NameInverter
         }
 
         return sprintf('%s, %s', $parts[1], $parts[0]);
+    }
+
+    private function isHonorific(string $part): bool
+    {
+        return $part === 'Mr.';
     }
 }
