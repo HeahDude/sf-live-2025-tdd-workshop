@@ -67,4 +67,11 @@ class NameInverterTest extends TestCase
         yield 'Ms.' => ['Ms.'];
         yield 'Ms' => ['Ms'];
     }
+
+    public function testInvertFullNameWithPostNominals(): void
+    {
+        $name = 'Toto Tata Bs. PhD.';
+
+        self::assertSame('Tata, Toto Bs. PhD.', $this->inverter->invert($name));
+    }
 }
